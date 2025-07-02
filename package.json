@@ -9,10 +9,9 @@
     "preview": "vite preview",
     "fmt": "prettier --write 'src/**/*.js'",
     "fmte": "prettier --write 'examples/**/*.js'"
-
   },
   "devDependencies": {
-    "prettier": "^3.0.3",
+    "prettier": "^3.6.2",
     "vite": "^4.4.5"
   }
 }
