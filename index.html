@@ -7,61 +7,79 @@
 	-->
 
     <style>
+/*
       * {
         margin: 0;
         padding: 0;
       }
+*/
+      h1 ,h2, h3, ul, li {
+        margin-block-start: 0;
+        margin-block-end: 0;
+      }
       .app {
         width: 100vw;
         height: 100vh;
+        margin: 0px;
+        padding-left: 4px;
         display: flex;
         flex-direction: column;
       }
 
       .header {
-        /* height: 48px; */
-        background-color: lightcyan;
+        height: 200px; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        background-color: #ffffff;
         box-sizing: border-box;
-        border: 8px solid blue;
+        border: 2px solid blue;
+	margin: 0;
+        padding: 0px;
+
       }
 
       .main {
+        margin-top: 200px;
         display: flex;
         flex-direction: row;
         flex-grow: 1;
+	/* overflow: hidden;*/
+	overflow: auto;
+        border: 2px solid yellow;
       }
 
       .sidebar {
         width: 180px;
-        background-color: moccasin;
+        /*background-color: moccasin;*/
         box-sizing: border-box;
-        border: 8px solid chocolate;
+        border: 2px solid chocolate;
       }
 
       .content {
         display: flex;
         flex-direction: column;
         flex-grow: 1;
+        border: 2px solid red;
       }
 
       .flex-content {
-        /*flex-grow: 1;*/
-        background-color: palegoldenrod;
+        /*flex-grow: 0.5;*/
+        /*background-color: palegoldenrod;*/
         box-sizing: border-box;
-        border: 8px solid green;
+        border: 2px solid green;
       }
 
       .fixed-content {
         /* height: 128px;*/
-        background-color: thistle;
+        /*background-color: thistle;*/
         box-sizing: border-box;
-        border: 8px solid darkmagenta;
+        border: 2px solid darkmagenta;
       }
 
-      .menu {
-        max-height: 70vh;
-        overflow-y: scroll;
-      }
+      /************************************/
+
 
       iframe {
         border: none;
@@ -73,17 +91,32 @@
         overflow: hidden;
       }
 
-      button {
-        width: 100%;
-        text-align: left;
+      .menu {
+        max-height: 50vh;
+        overflow-y: scroll;
       }
 
-      ul {
-        padding-left: 0;
+      button {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        text-align: left;
+	padding-block-start: 0;
+      }
+
+      .menu > ul {
+        margin: 0;
+        padding: 20px;
+      }
+      
+      .menu > ul > li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
       li {
-        list-style: none;
+        list-style: square;
       }
 
       blockquote {
@@ -97,16 +130,8 @@
   <body>
     <div class="app">
       <div class="header">
-        <h1>mxGraph JavaScript</h1>
-        <h2>Installation</h2>
-        <p>
-          The examples can be edited with any texteditor. To run the examples point your browser directly to the local files (use links below) or use a webserver to deliver the files. Note that the files should always be delivered via a
-          webserver in production. Local usage of files is only recommended for development and testing. (Please read
-          <a href="../docs/known-issues.html#AccessDenied">this</a>
-          for running examples from the local filesystem in Internet Explorer.)
-        </p>
-        <h2>Examples</h2>
-        <p>javascript/examples/editors contains the following examples:</p>
+        <h1>gs mxGraph JavaScript</h1>
+        <h3>Examples</h3>
         <ul>
           <li><a href="examples/grapheditor/www/index.html">Graph Editor</a> - Fully functional diagram editor and drawing application.</li>
           <li><a href="examples/editors/diagrameditor.html">mxDraw</a> - Web 2.0-style diagram editor and drawing application.</li>
@@ -368,13 +393,11 @@
         <!-- sidebar end -->
         <div class="content">
           <div class="flex-content">
-            <p>javascript/examples contains the following examples:</p>
-
             <div id="title"></div>
             <div id="desc"></div>
             <div id="iframe"></div>
           </div>
-          <div class="fixed-content">コンテンツ2</div>
+          <div class="fixed-content">abc</div>
         </div>
         <!-- content end -->
       </div>
@@ -389,8 +412,10 @@
         const parent = document.getElementById("iframe");
         iframe = document.createElement("iframe");
         iframe.src = src;
-        iframe.width = "300";
-        iframe.height = "200";
+        //iframe.width = "300";
+        iframe.width = "100%";
+        /*iframe.height = "200";*/
+        iframe.height = "100%";
         parent.appendChild(iframe);
         const title = document.getElementById("title");
         title.innerHTML = `<h1>${src}</h1>`;
